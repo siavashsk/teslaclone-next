@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HomeItem from "../components/HomeItem";

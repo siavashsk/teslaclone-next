@@ -11,7 +11,7 @@ const StyledButton = ({ type, content, onClick }: T) => {
 
   return (
     <button
-      className={`w-60 h-9 text-sm rounded-md text-center ${bgColor} ${textColor} font-semibold`}
+      className={`w-60 h-9 text-sm rounded-1 text-center ${bgColor} ${textColor} font-semibold`}
       onClick={() => onClick}
     >
       {content}

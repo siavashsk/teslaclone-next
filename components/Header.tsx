@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { navItems } from "../data";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -23,9 +24,11 @@ const Header = () => {
         alt="menu"
       />
       <ul className="hidden lg:flex gap-8">
-        <div className="cursor-pointer">Shop</div>
-        <div className="cursor-pointer">Account</div>
-        <div className="cursor-pointer">Menu</div>
+        <Link href="/signin">
+          <li className="cursor-pointer">Account</li>
+        </Link>
+        <li className="cursor-pointer">Shop</li>
+        <li className="cursor-pointer">Menu</li>
       </ul>
     </header>
   );
