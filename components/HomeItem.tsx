@@ -4,14 +4,13 @@ import StyledButton from "./UI/StyledButton";
 interface T {
   id: number;
   name: string;
-  subText: string;
+  subText: string | null;
   image: string;
 }
 
-
-const HomeItem = ({ name, subText, image }: T) => {
+const HomeItem = ({ id, name, subText, image }: T) => {
   return (
-    <div className="h-[100vh]">
+    <div className="h-[100vh]" key={id}>
       <div className="absolute -z-10 h-[95vh] w-full">
         <img src={image} alt={name} className="w-full h-[100vh] object-cover" />
       </div>
