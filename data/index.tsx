@@ -44,4 +44,10 @@ export const HomeItems = [
     subText: "Produce Clean Energy From Your Roof",
     image: "/solarroof.webp",
   },
+  {
+    id: 7,
+    name: "Accessories",
+    subText: "",
+    image: "/charger.jfif",
+  },
 ];

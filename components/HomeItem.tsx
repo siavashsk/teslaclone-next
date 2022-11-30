@@ -1,4 +1,5 @@
 import React from "react";
+import StyledButton from "./UI/StyledButton";
 
 interface T {
   id: number;
@@ -25,12 +26,16 @@ const HomeItem = ({ name, subText, image }: T) => {
         </div>
 
         <div className="sm:flex justify-center gap-6">
-          <button className="w-60 h-9 text-sm rounded-md text-center bg-gray-dark text-white font-semibold">
-            Custom Order
-          </button>
-          <button className="w-60 h-9 text-sm rounded-md text-center bg-[#FFFFFFA6] text-gray font-semibold">
-            Existing Inventory
-          </button>
+          <StyledButton
+            content="Custom Order"
+            type="primary"
+            onClick={() => console.log("button pressed")}
+          />
+          <StyledButton
+            content="Existing Inventory"
+            type="secondary"
+            onClick={() => console.log("button pressed")}
+          />
         </div>
       </div>
     </div>
