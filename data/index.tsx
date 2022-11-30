@@ -51,3 +51,14 @@ export const HomeItems = [
     image: "/charger.jfif",
   },
 ];
+
+export const footerItem = [
+  { id: 1, name: "Tesla © 2022" },
+  { id: 2, name: "Privacy & Legal" },
+  { id: 3, name: "Vehicle Recalls" },
+  { id: 4, name: "Contact" },
+  { id: 5, name: "Careers" },
+  { id: 6, name: "News" },
+  { id: 7, name: "Engage" },
+  { id: 8, name: "Locations" },
+];
