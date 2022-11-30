@@ -8,14 +8,8 @@ interface T {
   image: string;
 }
 
-interface T {
-  id: number;
-  name: string;
-  subText: string;
-  image: string;
-}
 
-const HomeItem = ({ name, subText, image }: T{ name, subText, image }: T) => {
+const HomeItem = ({ name, subText, image }: T) => {
   return (
     <div className="h-[100vh]">
       <div className="absolute -z-10 h-[95vh] w-full">
