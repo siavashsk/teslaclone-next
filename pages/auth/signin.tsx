@@ -1,14 +1,17 @@
 import Image from "next/image";
 import { BsGlobe2 } from "react-icons/bs";
 import { BiInfoCircle } from "react-icons/bi";
+import Link from "next/link";
 
 const signin = () => {
   return (
     <div>
       <div className="flex justify-between p-4">
-        <div className="sm:pl-6 pl-0 transition-all">
-          <Image src="/logo.png" alt="logo" width={100} height={100} />
-        </div>
+        <Link href="/">
+          <div className="sm:pl-6 pl-0 transition-all cursor-pointer">
+            <Image src="/logo.png" alt="logo" width={100} height={100} />
+          </div>
+        </Link>
         <button className="flex items-center justify-center gap-1">
           <BsGlobe2 />
           <p className="font-medium text-sm text-gray">en-US</p>

@@ -26,7 +26,7 @@ const HomeItem = ({ id, name, subText, image, shopNow }: T) => {
           </p>
         </div>
 
-        <div className="flex justify-center gap-6 mx-4">
+        <div className="flex justify-center gap-6 mx-4 max-[540px]:column">
           {shopNow ? (
             <StyledButton
               content="Shop Now"
