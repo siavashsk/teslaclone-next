@@ -25,7 +25,7 @@ const ScrollToTop = () => {
     <div>
       {showBtn && (
         <div
-          className="absolute bottom-5 cursor-pointer left-[49%]"
+          className="absolute bottom-5 cursor-pointer left-[49%] animate-bounce"
           onClick={goDown}
         >
           <IoIosArrowDown size={25} color="#171A20CC" />
