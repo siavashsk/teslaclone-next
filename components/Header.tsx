@@ -25,7 +25,7 @@ const Header = () => {
       />
       <ul className="hidden lg:flex gap-8">
         <li className="cursor-pointer">Shop</li>
-        <Link href="/signin">
+        <Link href="/auth/signin">
           <li className="cursor-pointer">Account</li>
         </Link>
         <li className="cursor-pointer">Menu</li>

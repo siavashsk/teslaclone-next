@@ -6,9 +6,10 @@ interface T {
   name: string;
   subText: string | null;
   image: string;
+  shopNow: boolean | undefined;
 }
 
-const HomeItem = ({ id, name, subText, image }: T) => {
+const HomeItem = ({ id, name, subText, image, shopNow }: T) => {
   return (
     <div className="h-[100vh]" key={id}>
       <div className="absolute -z-10 h-[95vh] w-full">
@@ -25,17 +26,27 @@ const HomeItem = ({ id, name, subText, image }: T) => {
           </p>
         </div>
 
-        <div className="sm:flex justify-center gap-6">
-          <StyledButton
-            content="Custom Order"
-            type="primary"
-            onClick={() => console.log("button pressed")}
-          />
-          <StyledButton
-            content="Existing Inventory"
-            type="secondary"
-            onClick={() => console.log("button pressed")}
-          />
+        <div className="flex justify-center gap-6 mx-4">
+          {shopNow ? (
+            <StyledButton
+              content="Shop Now"
+              type="primary"
+              onClick={() => console.log("button pressed")}
+            />
+          ) : (
+            <>
+              <StyledButton
+                content="Custom Order"
+                type="primary"
+                onClick={() => console.log("button pressed")}
+              />
+              <StyledButton
+                content="Existing Inventory"
+                type="secondary"
+                onClick={() => console.log("button pressed")}
+              />
+            </>
+          )}
         </div>
       </div>
     </div>

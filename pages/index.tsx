@@ -17,8 +17,14 @@ export default function Home() {
       </Head>
 
       <Header />
-      {HomeItems.map(({ id, name, subText, image }) => (
-        <HomeItem id={id} name={name} subText={subText} image={image} />
+      {HomeItems.map(({ id, name, subText, image, shopNow }) => (
+        <HomeItem
+          id={id}
+          name={name}
+          subText={subText}
+          image={image}
+          shopNow={shopNow}
+        />
       ))}
       <Footer />
     </Fragment>

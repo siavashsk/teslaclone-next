@@ -49,6 +49,7 @@ export const HomeItems = [
     name: "Accessories",
     subText: "",
     image: "/charger.jfif",
+    shopNow: true,
   },
 ];
 
