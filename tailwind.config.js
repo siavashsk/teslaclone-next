@@ -35,6 +35,11 @@ module.exports = {
         128: "32rem",
         144: "36rem",
       },
+      borderWidth:{
+        1: "1px",
+        2: "2px",
+        3: "3px",
+      },
       borderRadius: {
         1: "0.3rem",
         2: "0.4rem",
