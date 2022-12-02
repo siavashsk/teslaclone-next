@@ -1,36 +1,57 @@
 import React from "react";
+import StyledButton from "./UI/StyledButton";
 
-const HomeItem = () => {
+interface T {
+  id: number;
+  name: string;
+  subText: string | null;
+  image: string;
+  shopNow: boolean | undefined;
+}
+
+const HomeItem = ({ id, name, subText, image, shopNow }: T) => {
   return (
-    <>
-      <div className="absolute top-0 left-0 -z-10 h-[95vh] w-screen">
-        <img
-          src="/model3.jfif"
-          alt="model3"
-          className="w-full h-[100vh] object-cover"
-        />
-      </div>
-      <div className="flex justify-center items-center flex-col pt-28">
-        <h1 className="text-4xl font-semibold">Model 3</h1>
-        <p
-          className="underline font-normal pt-2 text-gray
-          text-sm"
-        >
-          Schedule a Test Drive
-        </p>
+    <div className="h-[100vh]" key={id}>
 
-        <div className="absolute bottom-28">
-          <div className="sm:flex justify-center gap-6">
-            <button className="w-60 h-9 text-sm rounded-md text-center bg-gray-dark text-white font-semibold">
-              Custom Order
-            </button>
-            <button className="w-60 h-9 text-sm rounded-md text-center bg-[#FFFFFFA6] text-gray font-semibold">
-              Existing Inventory
-            </button>
-          </div>
+
+      <div className="absolute -z-10 h-[95vh] w-full">
+        <img src={image} alt={name} className="w-full h-[100vh] object-cover" />
+      </div>
+      <div className="h-[86%] flex flex-col justify-between items-center pt-28">
+        <div className="flex flex-col">
+          <h1 className="text-4xl font-semibold text-[#222]">{name}</h1>
+          <p
+            className="underline font-normal pt-2 text-gray cursor-pointer
+          text-sm"
+          >
+            {subText}
+          </p>
+        </div>
+
+        <div className="flex justify-center gap-6 mx-4 max-[540px]:column">
+          {shopNow ? (
+            <StyledButton
+              content="Shop Now"
+              type="primary"
+              onClick={() => console.log("button pressed")}
+            />
+          ) : (
+            <>
+              <StyledButton
+                content="Custom Order"
+                type="primary"
+                onClick={() => console.log("button pressed")}
+              />
+              <StyledButton
+                content="Existing Inventory"
+                type="secondary"
+                onClick={() => console.log("button pressed")}
+              />
+            </>
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

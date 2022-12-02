@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { navItems } from "../data";
+import Link from "next/link";
 
 const Header = () => {
+  const [menu, setMenu] = useState(false);
+  console.log(menu);
+
   return (
     <header className="w-full fixed flex justify-between items-center p-4 text-sm font-medium text-gray-700 mb-7">
-      <div className="sm:pl-6 pl-0 transition-all">
-        <Image src="/logo.png" alt="logo" width={100} height={100} />
-      </div>
+
+      <Link href="/">
+        <div className="sm:pl-6 pl-0 transition-all cursor-pointer">
+          <Image src="/logo.png" alt="logo" width={100} height={100} />
+        </div>
+      </Link>
       <ul className="hidden lg:flex gap-7 ml-10">
         {navItems.map((item: any) => (
           <li key={item.id} className="cursor-pointer">
@@ -21,11 +28,16 @@ const Header = () => {
         width={20}
         height={20}
         alt="menu"
+        onClick={() => setMenu((prev) => !prev)}
       />
       <ul className="hidden lg:flex gap-8">
-        <div className="cursor-pointer">Shop</div>
-        <div className="cursor-pointer">Account</div>
-        <div className="cursor-pointer">Menu</div>
+        <li className="cursor-pointer">Shop</li>
+        <Link href="/auth/signin">
+          <li className="cursor-pointer">Account</li>
+        </Link>
+        <li className="cursor-pointer" onClick={() => setMenu((prev) => !prev)}>
+          Menu
+        </li>
       </ul>
     </header>
   );
