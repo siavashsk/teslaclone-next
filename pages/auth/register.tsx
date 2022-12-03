@@ -22,7 +22,7 @@ const Register = () => {
             <input
               type="text"
               name="firstname"
-              className="w-full bg-firstGray rounded-md p-2 outline-none text-sm font-semibold text-gray-dark focus:border-1 transition-all"
+              className="input"
             />
             <div className="flex items-center gap-2 text-gray py-4">
               <label
@@ -35,7 +35,7 @@ const Register = () => {
             <input
               type="text"
               name="firstname"
-              className="w-full bg-firstGray rounded-md p-2 outline-none text-sm font-semibold text-gray-dark focus:border-1 transition-all"
+              className="input"
             />
 
             <div className="flex items-center gap-2 text-gray py-4">
@@ -49,7 +49,7 @@ const Register = () => {
             <input
               type="text"
               name="firstname"
-              className="w-full bg-firstGray rounded-md p-2 outline-none text-sm font-semibold text-gray-dark focus:border-1 transition-all"
+              className="input"
             />
             <div className="">
               <p className="py-4 text-xs font-semibold text-gray">
