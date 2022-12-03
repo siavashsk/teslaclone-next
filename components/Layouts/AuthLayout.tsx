@@ -18,8 +18,8 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
         </button>
       </div>
       {children}
-      <div className="absolute bottom-4">
-        <ul className="flex gap-3">
+      <div className="absolute bottom-4 w-full">
+        <ul className="flex gap-3 justify-center">
           <li className="text-xs text-gray font-semibold cursor-pointer hover:underline">
             Tesla © 2022
           </li>

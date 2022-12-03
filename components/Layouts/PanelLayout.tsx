@@ -6,8 +6,8 @@ const PanelLayout = () => {
     <div>
       <Header />
       PanelLayout
-      <div className="absolute bottom-4">
-        <ul className="flex gap-3">
+      <div className="fixrd bottom-4 w-full">
+        <ul className="flex gap-3 justify-center">
           <li className="footerText">
             Tesla © 2022
           </li>
