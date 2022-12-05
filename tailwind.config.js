@@ -21,7 +21,7 @@ module.exports = {
       yellow: "#ffc82c",
       firstGray: "#f1f1f1",
       hoverGray: "#ededed",
-      "gray-dark": "#171A20CC",
+      "gray-dark": "#373b3e",
       "dark-blue": "#24419e",
       gray: "#595959",
       "gray-light": "#d3dce6",
@@ -34,6 +34,11 @@ module.exports = {
       spacing: {
         128: "32rem",
         144: "36rem",
+      },
+      borderWidth:{
+        1: "1px",
+        2: "2px",
+        3: "3px",
       },
       borderRadius: {
         1: "0.3rem",
