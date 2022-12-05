@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { useFormik } from "formik";
 import Link from "next/link";
 import { BiInfoCircle } from "react-icons/bi";
 import AuthLayout from "../../components/Layouts/AuthLayout";
 import { loginSchema } from "../../utils/formikSchemas";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 interface IValues {
   email: string;
@@ -13,6 +13,7 @@ interface IValues {
 const onSubmit = async (values: IValues) => {
   const user = { email: values.email, password: values.password };
   try {
+    console.log("success");
   } catch (error) {
     console.log(error);
   }
@@ -43,7 +44,7 @@ const Signin = () => {
           <h1 className="sm:text-3xl font-medium text-[#222] mt-4 transition-all text-2xl">
             Sign In
           </h1>
-          <form action="" className="pt-6">
+          <form className="pt-6" onSubmit={handleSubmit}>
             <div className="flex items-center gap-2 text-gray pb-2">
               <label
                 htmlFor="email"
@@ -61,7 +62,6 @@ const Signin = () => {
               className="input"
               value={values.email}
               onChange={handleChange}
-              onBlur={handleBlur}
             />
 
             <div className="flex items-center gap-2 text-gray py-2">
@@ -78,12 +78,14 @@ const Signin = () => {
               className="input"
               value={values.password}
               onChange={handleChange}
-              onBlur={handleBlur}
             />
 
             <div className="pt-6">
-              <button className="w-full text-center bg-blue rounded-1 h-9 text-white font-semibold text-sm hover:bg-dark-blue transition-all">
-                Next
+              <button
+                className="w-full text-center bg-blue rounded-1 h-9 text-white font-semibold text-sm hover:bg-dark-blue transition-all"
+                type="submit"
+              >
+                {isSubmitting ? <Spinner /> : "Login"}
               </button>
             </div>
             <p className="underline text-gray text-sm text-center mt-4 cursor-pointer">

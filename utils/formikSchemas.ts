@@ -13,10 +13,6 @@ export const registerSchema = yup.object().shape({
       message: "Password should contain 1 upper case letter, 1 lower case letter, 1 numeric digit.",
     })
     .required("Please enter password"),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match")
-    .required("Please confirm your password"),
 });
 export const loginSchema = yup.object().shape({
   email: yup.string().required("Please enter email"),
