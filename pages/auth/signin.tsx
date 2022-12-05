@@ -36,7 +36,6 @@ const Signin = () => {
     onSubmit,
   });
 
-  console.log(values.email)
   return (
     <AuthLayout>
       <div className="flex justify-center items-center px-4">

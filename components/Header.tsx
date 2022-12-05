@@ -12,8 +12,8 @@ const Header = () => {
       {showSidebar && (
         <>
           <div
-            className={`top-0 right-0 w-[274px] bg-blue-600 bg-white hidescroll overflow-scroll p-5 pl-10 text-white fixed h-full z-40 ease-in-out duration-300 ${
-              showSidebar ? "w-[300px] " : "w-0"
+            className={`fixed top-0 right-0 w-[274px] bg-blue-600 bg-white hidescroll overflow-scroll p-5 pl-10 text-white h-full z-40 ease-in-out duration-300 ${
+              showSidebar ? "w-[300px]" : "w-0"
             }`}
           >
             <div className="pt-12">
