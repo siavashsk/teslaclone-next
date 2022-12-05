@@ -82,3 +82,13 @@ export const sideBarMenuItems = [
   { id: 15, name: "Investor Relations" },
   { id: 16, name: "United States" },
 ];
+
+export const panelSidebarOptions = [
+  {id: 1, title: 'dashboard', route: '/teslaaccount', icon: 'home'},
+  {id: 2, title: 'profile settings', route: '/teslaaccount/profile', icon: 'home'},
+  {id: 3, title: 'payment method', route: '/teslaaccount/payment', icon: 'home'},
+  {id: 4, title: 'charging', route: '/teslaaccount/charging', icon: 'home'},
+  {id: 5, title: 'loot box', route: '/teslaaccount/lootbox', icon: 'home'},
+  {id: 6, title: 'order history', route: '/teslaaccount/orders', icon: 'home'},
+  {id: 7, title: 'sing out', route: '/', icon: 'exit'},
+]
