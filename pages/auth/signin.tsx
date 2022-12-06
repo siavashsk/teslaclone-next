@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BiInfoCircle } from "react-icons/bi";
 import AuthLayout from "../../components/Layouts/AuthLayout";
 import { loginSchema } from "../../utils/formikSchemas";
-import Spinner from "../../components/UI/Spinner/Spinner";
+import Spinner from "../../components/UI/Spinner";
 
 interface IValues {
   email: string;

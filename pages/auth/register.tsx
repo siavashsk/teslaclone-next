@@ -1,7 +1,8 @@
 import { useFormik } from "formik";
 import React from "react";
 import AuthLayout from "../../components/Layouts/AuthLayout";
-import Spinner from "../../components/UI/Spinner/Spinner";
+import Spinner from "../../components/UI/Spinner";
+import { useRegisterMutation } from "../../redux/auth/authApi";
 import { registerSchema } from "../../utils/formikSchemas";
 
 interface IValues {
@@ -11,6 +12,8 @@ interface IValues {
 }
 
 const Register = () => {
+  const [register, { isSuccess, isError }] = useRegisterMutation();
+
   const onSubmit = async (values: IValues) => {
     const user = {
       name: values.name,
@@ -18,7 +21,7 @@ const Register = () => {
       password: values.password,
     };
     try {
-      console.log("success");
+      const res = await console.log("success");
     } catch (error) {
       console.log(error);
     }
@@ -104,7 +107,7 @@ const Register = () => {
               className="w-full text-center bg-blue rounded-1 h-9 text-white font-semibold text-sm hover:bg-dark-blue transition-all"
               type="submit"
             >
-              {isSubmitting ? <Spinner /> : "Submit"}
+              {isSubmitting ? <Spinner /> : "Register"}
             </button>
           </form>
         </div>
