@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import StyledButton from "./UI/StyledButton";
 
 interface T {
@@ -10,10 +10,9 @@ interface T {
 }
 
 const HomeItem = ({ id, name, subText, image, shopNow }: T) => {
+
   return (
     <div className="h-[100vh]" key={id}>
-
-
       <div className="absolute -z-10 h-[95vh] w-full">
         <img src={image} alt={name} className="w-full h-[100vh] object-cover" />
       </div>

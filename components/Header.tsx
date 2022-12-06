@@ -16,11 +16,11 @@ const Header = () => {
               showSidebar ? "w-[300px]" : "w-0"
             }`}
           >
-            <div className="pt-12">
+            <div className="pt-12 ">
               {sideBarMenuItems.map(({ id, name }) => (
                 <h3
                   key={id}
-                  className="py-2 text-sm cursor-pointer font-semibold text-gray-dark"
+                  className="my-3 mr-2 px-2 py-1 text-sm cursor-pointer font-semibold text-gray-dark hover:navHoverEffect"
                 >
                   {name}
                 </h3>
