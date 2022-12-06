@@ -39,6 +39,8 @@ export const baseQueryWithReAuth = async (
       return refreshResult;
     }
   }
+
+  return result;
 };
 
 export const api = createApi({

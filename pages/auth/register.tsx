@@ -1,8 +1,12 @@
 import { useFormik } from "formik";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import AuthLayout from "../../components/Layouts/AuthLayout";
+import Input from "../../components/UI/Input";
 import Spinner from "../../components/UI/Spinner";
 import { useRegisterMutation } from "../../redux/auth/authApi";
+import { setCredentials } from "../../redux/auth/authSlice";
 import { registerSchema } from "../../utils/formikSchemas";
 
 interface IValues {
@@ -12,7 +16,11 @@ interface IValues {
 }
 
 const Register = () => {
+  const [submitMessage, setSubmitMessage] = useState("");
+  const dispatch = useDispatch();
   const [register, { isSuccess, isError }] = useRegisterMutation();
+  const [getUser, { isLoading }] = useRegisterMutation();
+  const router = useRouter();
 
   const onSubmit = async (values: IValues) => {
     const user = {
@@ -21,9 +29,14 @@ const Register = () => {
       password: values.password,
     };
     try {
-      const res = await console.log("success");
-    } catch (error) {
+      const res = await register(user).unwrap();
+      console.log(res);
+      dispatch(setCredentials({ token: res.token, user }));
+      setSubmitMessage(res.message);
+      router.replace("/");
+    } catch (error: any) {
       console.log(error);
+      setSubmitMessage(error.data.message);
     }
   };
 
@@ -31,7 +44,6 @@ const Register = () => {
     values,
     errors,
     handleChange,
-    handleBlur,
     handleSubmit,
     isSubmitting,
     touched,
@@ -52,53 +64,47 @@ const Register = () => {
           <h1 className="sm:text-3xl font-medium text-[#222] mt-4 transition-all text-2xl">
             Create Account
           </h1>
+          {isError && <p className="text-xs font-semibold">{submitMessage}</p>}
           <form onSubmit={handleSubmit} className="pt-6">
-            <div className="flex items-center gap-2 text-gray py-2">
-              <label
-                htmlFor="name"
-                className="text-[#7e8082] font-bold text-sm"
-              >
-                Name
-              </label>
-            </div>
-            <input
+            <Input
+              title="Name"
               type="text"
               id="name"
               className="input"
               value={values.name}
               onChange={handleChange}
             />
-            <div className="flex items-center gap-2 text-gray py-2">
-              <label
-                htmlFor="email"
-                className="text-[#7e8082] font-bold text-sm"
-              >
-                Email
-              </label>
-            </div>
-            <input
+            {errors?.name && touched?.name && (
+              <p className="text-xs text-[#e13535] font-semibold">
+                {errors?.name}
+              </p>
+            )}
+            <Input
+              title="Email"
               type="email"
               id="email"
               className="input"
               value={values.email}
               onChange={handleChange}
             />
-
-            <div className="flex items-center gap-2 text-gray py-2">
-              <label
-                htmlFor="password"
-                className="text-[#7e8082] font-bold text-sm"
-              >
-                Password
-              </label>
-            </div>
-            <input
+            {errors?.email && touched?.email && (
+              <p className="text-xs text-[#e13535] font-semibold">
+                {errors?.email}
+              </p>
+            )}
+            <Input
+              title="Password"
               type="password"
               id="password"
               className="input"
               value={values.password}
               onChange={handleChange}
             />
+            {errors?.password && touched?.password && (
+              <p className="text-xs text-[#e13535] font-semibold">
+                {errors?.password}
+              </p>
+            )}
             <p className="py-4 text-xs font-semibold text-gray">
               By continuing, I understand and agree to Teslas Privacy Notice and
               Terms Of Use for creating a Tesla Account

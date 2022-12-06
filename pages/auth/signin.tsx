@@ -1,25 +1,41 @@
+import { useState } from "react";
 import { useFormik } from "formik";
 import Link from "next/link";
 import { BiInfoCircle } from "react-icons/bi";
 import AuthLayout from "../../components/Layouts/AuthLayout";
 import { loginSchema } from "../../utils/formikSchemas";
 import Spinner from "../../components/UI/Spinner";
+import Input from "../../components/UI/Input";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { useLoginMutation } from "../../redux/auth/authApi";
+import { setCredentials } from "../../redux/auth/authSlice";
 
 interface IValues {
   email: string;
   password: string;
 }
 
-const onSubmit = async (values: IValues) => {
-  const user = { email: values.email, password: values.password };
-  try {
-    console.log("success");
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const Signin = () => {
+  const [submitMessage, setSubmitMessage] = useState("");
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const [login, { isError, isSuccess }] = useLoginMutation();
+
+  const onSubmit = async (values: IValues) => {
+    const user = { email: values.email, password: values.password };
+    try {
+      const res = await login(user).unwrap();
+      console.log(res);
+      dispatch(setCredentials({ token: res.data.token, user: res.data.user }));
+      setSubmitMessage(res.message);
+      router.replace("/");
+    } catch (error: any) {
+      console.log(error);
+      setSubmitMessage(error.data.message);
+    }
+  };
+
   const {
     values,
     errors,
@@ -44,41 +60,36 @@ const Signin = () => {
           <h1 className="sm:text-3xl font-medium text-[#222] mt-4 transition-all text-2xl">
             Sign In
           </h1>
+          {isError && <p className="text-xs font-semibold">{submitMessage}</p>}
           <form className="pt-6" onSubmit={handleSubmit}>
-            <div className="flex items-center gap-2 text-gray pb-2">
-              <label
-                htmlFor="email"
-                className="text-[#7e8082] font-bold text-sm"
-              >
-                Email
-              </label>
-              <div>
-                <BiInfoCircle />
-              </div>
-            </div>
-            <input
+            <Input
+              title="Email"
+              icon={<BiInfoCircle />}
               type="email"
               id="email"
               className="input"
               value={values.email}
               onChange={handleChange}
             />
+            {errors?.email && touched?.email && (
+              <p className="text-xs text-[#e13535] font-semibold">
+                {errors?.email}
+              </p>
+            )}
 
-            <div className="flex items-center gap-2 text-gray py-2">
-              <label
-                htmlFor="password"
-                className="text-[#7e8082] font-bold text-sm"
-              >
-                Password
-              </label>
-            </div>
-            <input
+            <Input
+              title="Password"
               type="password"
               id="password"
               className="input"
               value={values.password}
               onChange={handleChange}
             />
+            {errors?.password && touched?.password && (
+              <p className="text-xs text-[#e13535] font-semibold">
+                {errors?.password}
+              </p>
+            )}
 
             <div className="pt-6">
               <button

@@ -1,6 +1,6 @@
 import React from "react";
 
-const TextInput = ({ title, icon, ...otherProp }: any) => {
+const Input = ({ title, icon, ...otherProp }: any) => {
   return (
     <>
       <div className="flex items-center gap-2 text-gray py-2">
@@ -14,4 +14,4 @@ const TextInput = ({ title, icon, ...otherProp }: any) => {
   );
 };
 
-export default TextInput;
+export default Input;
