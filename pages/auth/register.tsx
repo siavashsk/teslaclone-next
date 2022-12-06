@@ -22,6 +22,13 @@ const Register = () => {
   const [getUser, { isLoading }] = useRegisterMutation();
   const router = useRouter();
 
+  const checkUniqueUsername = () => {
+    try {
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const onSubmit = async (values: IValues) => {
     const user = {
       name: values.name,
@@ -40,22 +47,16 @@ const Register = () => {
     }
   };
 
-  const {
-    values,
-    errors,
-    handleChange,
-    handleSubmit,
-    isSubmitting,
-    touched,
-  } = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      password: "",
-    },
-    validationSchema: registerSchema,
-    onSubmit,
-  });
+  const { values, errors, handleChange, handleSubmit, isSubmitting, touched } =
+    useFormik({
+      initialValues: {
+        name: "",
+        email: "",
+        password: "",
+      },
+      validationSchema: registerSchema,
+      onSubmit,
+    });
 
   return (
     <AuthLayout>
