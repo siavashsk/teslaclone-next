@@ -40,7 +40,7 @@ const Register = () => {
       console.log(res);
       dispatch(setCredentials({ token: res.token, user }));
       setSubmitMessage(res.message);
-      router.replace("/");
+      router.replace("/teslaaccount");
     } catch (error: any) {
       console.log(error);
       setSubmitMessage(error.data.message);
@@ -66,6 +66,9 @@ const Register = () => {
             Create Account
           </h1>
           {isError && <p className="text-xs font-semibold">{submitMessage}</p>}
+          {isSuccess && (
+            <p className="text-xs font-semibold">{submitMessage}</p>
+          )}
           <form onSubmit={handleSubmit} className="pt-6">
             <Input
               title="Name"

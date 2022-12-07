@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { Fragment } from "react";
-import { Footer, Header, HomeItem, ScrollToTop } from "../components";
-
+import { Footer, Header, HomeItem, ScrollToTop } from "@/components/index";
 import { HomeItems } from "../data";
 
 export default function Home() {

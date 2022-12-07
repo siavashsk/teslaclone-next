@@ -34,6 +34,6 @@ a {
     @apply text-xs text-gray font-semibold cursor-pointer hover:underline
   }
   .navHoverEffect{
-    @apply transition-all bg-smoothGray
+    @apply bg-smoothGray 
   }
 }

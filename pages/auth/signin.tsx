@@ -29,7 +29,7 @@ const Signin = () => {
       console.log(res);
       dispatch(setCredentials({ token: res.data.token, user: res.data.user }));
       setSubmitMessage(res.message);
-      router.replace("/");
+      router.replace("/teslaaccount");
     } catch (error: any) {
       console.log(error);
       setSubmitMessage(error.data.message);
@@ -40,7 +40,6 @@ const Signin = () => {
     values,
     errors,
     handleChange,
-    handleBlur,
     handleSubmit,
     isSubmitting,
     touched,
@@ -61,6 +60,9 @@ const Signin = () => {
             Sign In
           </h1>
           {isError && <p className="text-xs font-semibold">{submitMessage}</p>}
+          {isSuccess && (
+            <p className="text-xs font-semibold">{submitMessage}</p>
+          )}
           <form className="pt-6" onSubmit={handleSubmit}>
             <Input
               title="Email"

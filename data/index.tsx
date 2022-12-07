@@ -1,3 +1,8 @@
+import { BiHomeAlt } from "react-icons/bi";
+import { BsBox, BsBoxArrowRight, BsLightning, BsPerson } from "react-icons/bs";
+import { MdPayment } from "react-icons/md";
+import { RiTShirtLine } from "react-icons/ri";
+
 export const navItems = [
   { id: 1, name: "Model S" },
   { id: 2, name: "Model 3" },
@@ -22,7 +27,7 @@ export const HomeItems = [
   },
   {
     id: 3,
-    name: "Model Y",
+    name: "Model S",
     subText: "Schedule a Test Drive",
     image: "/models.jfif",
   },
@@ -84,11 +89,71 @@ export const sideBarMenuItems = [
 ];
 
 export const panelSidebarOptions = [
-  {id: 1, title: 'dashboard', route: '/teslaaccount', icon: 'home'},
-  {id: 2, title: 'profile settings', route: '/teslaaccount/profile', icon: 'home'},
-  {id: 3, title: 'payment method', route: '/teslaaccount/payment', icon: 'home'},
-  {id: 4, title: 'charging', route: '/teslaaccount/charging', icon: 'home'},
-  {id: 5, title: 'loot box', route: '/teslaaccount/lootbox', icon: 'home'},
-  {id: 6, title: 'order history', route: '/teslaaccount/orders', icon: 'home'},
-  {id: 7, title: 'sing out', route: '/', icon: 'exit'},
-]
+  { id: 1, title: "dashboard", route: "/teslaaccount", icon: "home" },
+  {
+    id: 2,
+    title: "profile settings",
+    route: "/teslaaccount/profile",
+    icon: "home",
+  },
+  {
+    id: 3,
+    title: "payment method",
+    route: "/teslaaccount/payment",
+    icon: "home",
+  },
+  { id: 4, title: "charging", route: "/teslaaccount/charging", icon: "home" },
+  { id: 5, title: "loot box", route: "/teslaaccount/lootbox", icon: "home" },
+  {
+    id: 6,
+    title: "order history",
+    route: "/teslaaccount/orders",
+    icon: "home",
+  },
+  { id: 7, title: "sing out", route: "/", icon: "exit" },
+];
+
+export const sidebarOptions = [
+  {
+    id: 1,
+    option: "dashboard",
+    icon: <BiHomeAlt size={20} className="text-gray"/>,
+    route: "/teslaaccount",
+  },
+  {
+    id: 2,
+    option: "profile settings",
+    icon: <BsPerson size={20} className="text-gray"/>,
+    route: "/teslaaccount/profile",
+  },
+  {
+    id: 3,
+    option: "payment methods",
+    icon: <MdPayment size={20} className="text-gray"/>,
+    route: "/teslaaccount/payment",
+  },
+  {
+    id: 4,
+    option: "charging",
+    icon: <BsLightning size={20} className="text-gray"/>,
+    route: "/teslaaccount/charging",
+  },
+  {
+    id: 5,
+    option: "lootbox",
+    icon: <BsBox size={20} className="text-gray"/>,
+    route: "/teslaaccount/lootbox",
+  },
+  {
+    id: 6,
+    option: "order history",
+    icon: <RiTShirtLine size={20} className="text-gray"/>,
+    route: "/teslaaccount/orders",
+  },
+  {
+    id: 7,
+    option: "sign out",
+    icon: <BsBoxArrowRight size={20} className="text-gray"/>,
+    route: "/",
+  },
+];

@@ -16,7 +16,7 @@ const Header = () => {
               showSidebar ? "w-[300px]" : "w-0"
             }`}
           >
-            <div className="pt-12 ">
+            <div className="pt-12">
               {sideBarMenuItems.map(({ id, name }) => (
                 <h3
                   key={id}
@@ -28,7 +28,7 @@ const Header = () => {
             </div>
           </div>
           <button
-            className="flex text-2xl text-gray-dark items-center cursor-pointer fixed right-5 top-6 z-50"
+            className="flex text-2xl text-gray-dark items-center cursor-pointer fixed right-5 top-6 z-50 hover:navHoverEffect"
             onClick={() => setShowSidebar((prev) => !prev)}
           >
             <IoMdClose />
