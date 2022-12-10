@@ -1,6 +1,5 @@
 import { sidebarOptions } from "../../data";
 import React, { Fragment } from "react";
-import { AiOutlineHome } from "react-icons/ai";
 
 export const PanelSidebar = () => {
   return (

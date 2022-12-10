@@ -1,13 +1,16 @@
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import AuthLayout from "../../components/Layouts/AuthLayout";
 import Input from "../../components/UI/Input";
 import Spinner from "../../components/UI/Spinner";
 import { useRegisterMutation } from "../../redux/auth/authApi";
+import { useGetUserMutation } from "redux/users/usersApi";
 import { setCredentials } from "../../redux/auth/authSlice";
 import { registerSchema } from "../../utils/formikSchemas";
+import { GetServerSidePropsContext } from "next";
+import cookie from "cookie";
 
 interface IValues {
   name: string;
@@ -15,19 +18,27 @@ interface IValues {
   password: string;
 }
 
-const Register = () => {
+export default function Register() {
   const [submitMessage, setSubmitMessage] = useState("");
+  //const [isUsernameUnique, setIsUsernameUnique] = useState(false);
   const dispatch = useDispatch();
   const [register, { isSuccess, isError }] = useRegisterMutation();
-  const [getUser, { isLoading }] = useRegisterMutation();
+  const [getUser, { isLoading }] = useGetUserMutation();
   const router = useRouter();
 
-  const checkUniqueUsername = () => {
+  /* const checkUniqueUsername = async () => {
     try {
+      const res = await getUser(`username=${values.username}`).unwrap();
+      if (res.success) {
+        setIsUsernameUnique(false);
+      } else {
+        setIsUsernameUnique(true);
+      }
     } catch (error) {
       console.log(error);
+      setIsUsernameUnique(false);
     }
-  };
+  }; */
 
   const onSubmit = async (values: IValues) => {
     const user = {
@@ -124,6 +135,28 @@ const Register = () => {
       </div>
     </AuthLayout>
   );
-};
+}
 
-export default Register;
+export async function getServerSideProps({ req }: GetServerSidePropsContext) {
+  const { reftoken } = cookie.parse(req.headers.cookie || "");
+
+  const data = await fetch("http://localhost:5000/auth/refresh", {
+    method: "GET",
+    headers: {
+      Cookie: `reftoken=${reftoken}`,
+    },
+  }).then((res) => res.json());
+
+  if (data.success) {
+    console.log(data);
+    return {
+      redirect: {
+        destination: "/teslaaccount",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
